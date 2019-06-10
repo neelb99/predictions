@@ -28,6 +28,12 @@
 			<th class="text-center">Kani</th>
 		</tr>
 	{% for match in matches %}
+	{%if match.winner == "-"%}
+		{% set count1.vir = count1.vir+1 %}
+		{% set count2.jeh = count2.jeh+1 %}
+		{% set count3.neel = count3.neel+1 %}
+		{% set count4.kani = count4.kani+1 %}
+	{%endif%}
 	{%if match.winner != ""%}
 		<tr>
 			<td>{{match.name}}</td class="text-center">
