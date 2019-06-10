@@ -20,7 +20,7 @@
 	<br>
 	<table class="table table-dark table-bordered col-xs-10 col-md-12" border="1px solid white">
 		<tr>
-			<th class="text-center">Match</th>
+			<th>Match</th>
 			<th class="text-center">Winner</th>
 			<th class="text-center">Vir</th>
 			<th class="text-center">Jeh</th>
@@ -30,7 +30,7 @@
 	{% for match in matches %}
 	{%if match.winner != ""%}
 		<tr>
-			<td class="text-center">{{match.name}}</td class="text-center">
+			<td>{{match.name}}</td class="text-center">
 			<td class="text-center">{{match.winner}}</td class="text-center">
 			{% if match.vir==match.winner %}
 				<td class="text-center" style="background:hsl(147, 100%, 25%)";>{{match.vir}}</td class="text-center">
@@ -60,7 +60,7 @@
 	
 	{%else%}
 		<tr>
-		<td class="text-center">{{match.name}}</td class="text-center">
+		<td>{{match.name}}</td class="text-center">
 		<td class="text-center"> </td class="text-center">
 		<td class="text-center">{{match.vir}}</td class="text-center">
 		<td class="text-center">{{match.jeh}}</td class="text-center">
@@ -70,7 +70,7 @@
 	{%endif%}
 	{% endfor %}
 	<tr>
-		<td class="text-center">Points</td>
+		<td>Points</td>
 		<td></td>
 		<td class="text-center">{{count1.vir}}</td>
 		<td class="text-center">{{count2.jeh}}</td>
