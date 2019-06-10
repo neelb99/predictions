@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Home</title>
+</head>
+<body>
+	{% set count1 = namespace(vir=0) %}
+	{% set count2 = namespace(jeh=0) %}
+	{% set count3 = namespace(neel=0) %}
+	{% set count4 = namespace(kani=0) %}
+	
+	<center>
+	
+		<div class="jumbotron">
+	<h2>Predictions</h2>
+	<br>
+	<table class="table table-dark table-bordered" border="1px solid white">
+		<tr>
+			<th class="text-center">Match</th>
+			<th class="text-center">Winner</th>
+			<th class="text-center">Vir</th>
+			<th class="text-center">Jeh</th>
+			<th class="text-center">Neel</th>
+			<th class="text-center">Kani</th>
+		</tr>
+	{% for match in matches %}
+	{%if match.winner != ""%}
+		<tr>
+			<td class="text-center">{{match.name}}</td class="text-center">
+			<td class="text-center">{{match.winner}}</td class="text-center">
+			{% if match.vir==match.winner %}
+				<td class="text-center" style="background:hsl(147, 100%, 25%)";>{{match.vir}}</td class="text-center">
+				{% set count1.vir = count1.vir+2 %}
+			{%else%}
+				<td class="text-center" style="background:Red;">{{match.vir}}</td class="text-center">
+			{%endif%}
+			{% if match.jeh==match.winner %}
+				<td class="text-center" style="background:hsl(147, 100%, 25%)";>{{match.jeh}}</td class="text-center">
+				{% set count2.jeh = count2.jeh+2 %}
+			{%else%}
+				<td class="text-center" style="background:Red;">{{match.jeh}}</td class="text-center">
+			{%endif%}
+			{% if match.neel==match.winner %}
+				<td class="text-center" style="background:hsl(147, 100%, 25%)";>{{match.neel}}</td class="text-center">
+				{% set count3.neel = count3.neel+2 %}
+			{%else%}
+				<td class="text-center" style="background:Red;">{{match.neel}}</td class="text-center">
+			{%endif%}
+			{% if match.kani==match.winner %}
+				<td class="text-center" style="background:hsl(147, 100%, 25%)";>{{match.kani}}</td class="text-center">
+				{% set count4.kani = count4.kani+2 %}
+			{%else%}
+				<td class="text-center" style="background:Red;">{{match.kani}}</td class="text-center">
+			{%endif%}
+		</tr>
+	
+	{%else%}
+		<tr>
+		<td class="text-center">{{match.name}}</td class="text-center">
+		<td class="text-center"> </td class="text-center">
+		<td class="text-center">{{match.vir}}</td class="text-center">
+		<td class="text-center">{{match.jeh}}</td class="text-center">
+		<td class="text-center">{{match.neel}}</td class="text-center">
+		<td class="text-center">{{match.kani}}</td class="text-center">
+		</tr>
+	{%endif%}
+	{% endfor %}
+	<tr>
+		<td class="text-center">Points</td>
+		<td></td>
+		<td class="text-center">{{count1.vir}}</td>
+		<td class="text-center">{{count2.jeh}}</td>
+		<td class="text-center">{{count3.neel}}</td>
+		<td class="text-center">{{count4.kani}}</td>
+	</tr>
+</table>
+<br>
+<button class="btn btn-primary btn-lg text-center" onclick="location.href='{{url_for('add')}}';">Add Match</button>
+</center>
+
+	</body>
+</html>
